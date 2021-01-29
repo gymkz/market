@@ -32,6 +32,7 @@ module.exports = {
     }
   }
 }
+
 /**
  * proxy: {
       '/api': { //代理接口前缀为 /api

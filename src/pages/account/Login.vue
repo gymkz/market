@@ -18,6 +18,7 @@ export default defineComponent({
   z-index: 999;
   height: 100vh;
   width: 100vw;
+  top: -48px;
   background-color: white;
 }
 </style>

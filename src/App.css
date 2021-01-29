@@ -3,15 +3,17 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8f8f8;
-  height: 100vh;
+  background-color: #Fafafa;
+  /* height: 100vh; */
   /* overflow: scroll; */
 }
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 li {
   list-style: none;
 
@@ -21,14 +23,17 @@ li {
   -ms-user-select: none;
   user-select: none;
 }
+
 input {
   background: none;
   outline: none;
   border: none;
 }
+
 input:focus {
   border: none;
 }
+
 button {
   border: none;
   outline: none;
@@ -39,6 +44,7 @@ button {
   -ms-user-select: none;
   user-select: none;
 }
+
 button:active {
   /* 阴影平移-镂空按钮 */
   /* position: relative;
@@ -50,12 +56,14 @@ button:active {
   transform: scale(0.97, 0.97);
   background-color: #00000010;
 }
+
 .button {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
 .button:active {
   /* 阴影平移-镂空按钮 */
   /* position: relative;

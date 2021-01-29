@@ -12,7 +12,7 @@ export default class Navigate {
 
   private constructor(router: Router) {
     this.router = router;
-    this.dispatch();
+    // this.dispatch();
   }
 
   // 初始化

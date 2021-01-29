@@ -2,19 +2,18 @@
   <!-- 导航栏 -->
   <div>
     <div class="container row">
-      <div class="logo" />
+      <div class="logo">顾豫明</div>
       <div class="flex" />
       <div
-        class="item"
+        :class="'item' + (index === tabIndex ? ' select' : '')"
         v-for="(e, index) in tabList"
-        :style="index === tabIndex ? 'color: coral' : ''"
         :key="e"
         @click="onClick(index)"
       >
         {{ e }}
       </div>
       <div class="user-icon" @click="onLogin">
-        <img class="user-icon" />
+        <!-- <img class="user-icon" /> -->
       </div>
     </div>
     <div class="barsize" />
@@ -27,13 +26,17 @@ export default defineComponent({
   name: "Appbar",
   props: {
     onLogin: Function,
+    onChange: Function,
   },
-  setup() {
+  setup(props) {
     const tabIndex = ref(0);
-    const tabList = ["首页", "市场", "产品", "评测", "关于"];
+    const tabList = ["首页", "市场", "指标", "新闻", "关于"];
 
     function onClick(num: number) {
       tabIndex.value = num;
+      if(props.onChange) {
+        props.onChange(num);
+      }
     }
     return {
       tabIndex,
@@ -55,7 +58,7 @@ export default defineComponent({
   position: fixed;
   background-color: #131313;
   /* 参数1右边阴影宽度参数/2下边参数/3模糊半径 */
-  box-shadow: 0 4px 8px #00000090;
+  box-shadow: 0 5px 6px #00000080;
 }
 
 .row {
@@ -73,28 +76,29 @@ export default defineComponent({
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  /* width: 32px; */
+  /* height: 32px; */
   margin-left: 16px;
   margin-right: 24px;
-  border-radius: 50%;
-  background-color: coral;
+  /* border-radius: 50%; */
+  /* background-color: coral; */
 }
 
 .user-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 16px;
-  margin-left: 48px;
+  width: 28px;
+  height: 28px;
+  margin-right: 20px;
+  margin-left: 40px;
   border-radius: 50%;
   cursor: pointer;
   background-color: coral;
 }
 
 .item {
-  padding: 6px 16px;
+  padding: 8px;
+  margin: 0 8px;
   cursor: pointer;
-  font-weight: 700;
+  color: #F3F3F3;
   font-size: 16px;
   /* background-color: #FFFFFF10; */
 
@@ -102,6 +106,12 @@ export default defineComponent({
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.select {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: solid 2px white;
 }
 
 .item:hover {

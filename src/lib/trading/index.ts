@@ -3,9 +3,10 @@
  * Desc: 
  */
 
+// eslint-disable-next-line
 declare let TradingView: any;
 
-export function klineView() {
+export function kLineView():void {
   new TradingView.widget({
     // "width": 980,
     // "height": 610,
@@ -34,7 +35,7 @@ export function klineView() {
   });
 }
 
-export function mediumWidget() {
+export function mediumWidget():void {
   new TradingView.MediumWidget({
     "symbols": [
       [
