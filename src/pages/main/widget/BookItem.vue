@@ -1,11 +1,11 @@
 <template>
   <!-- 新闻 -->
-  <div class="container button2">
+  <div class="item-box">
     <div class="item-img">图片加载失败</div>
     <div class="item-content">
-      <h3 class="item-title">微观经济学·宏观经济学·经济学原理</h3>
-      <p class="item-label">作者： <span class="item-value">高斯·曼昆</span></p>
-      <p class="item-label">简介： 一本好书是经过几代人的时间检验</p>
+      <span class="item-title">{{item.name}}</span>
+      <p class="item-label">作者： <span class="item-value">{{item.author}}</span></p>
+      <p class="item-label">简介： {{item.desc}}</p>
     </div>
   </div>
 </template>
@@ -14,7 +14,9 @@ import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "BookItem",
-  components: {},
+  props: {
+    item: Object
+  },
   setup() {
     onMounted(() => {
       const timer = setTimeout(() => {
@@ -27,7 +29,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.container {
+.item-box {
   width: 537px;
   height: 240px;
   margin: 14px 16px;
@@ -39,6 +41,12 @@ export default defineComponent({
   box-shadow: 4px 4px 8px #00000030;
 }
 
+.item-box:active {
+  opacity: 0.92;
+  transform: scale(0.97, 0.97);
+  background-color: #00000010;
+}
+
 .item-img {
   width: 186px;
   height: 240px;
@@ -47,13 +55,17 @@ export default defineComponent({
 }
 
 .item-content {
+  flex: 1;
   padding: 12px 14px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .item-title {
   margin: 0 0 12px 0;
-  /* font-size: 16px; */
+  font-size: 18px;
+  font-weight: 700;
+  color: #232323;
 }
 
 .item-label {
@@ -64,7 +76,7 @@ export default defineComponent({
   text-overflow: ellipsis;
 }
 .item-value {
-  color: #121212;
+  color: #232323;
   font-weight: 700;
 }
 </style>

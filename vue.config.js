@@ -7,7 +7,7 @@
 const target = 'https://scanner.tradingview.com/';
 
 module.exports = {
-  publicPath: './',
+  publicPath: '/ucai/',
   assetsDir: './',
   productionSourceMap: false,
   devServer: {
