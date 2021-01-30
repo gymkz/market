@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup(props) {
     const tabIndex = ref(0);
-    const tabList = ["首页", "市场", "指标", "新闻", "关于"];
+    const tabList = ["首页", "市场", "指标", "进阶", "关于"];
 
     function onClick(num: number) {
       tabIndex.value = num;
@@ -85,13 +85,15 @@ export default defineComponent({
 }
 
 .user-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   margin-right: 20px;
   margin-left: 40px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: coral;
+  /* background-color: coral; */
+  background-size: cover;
+  background-image: url(../assets/user_ic.jpg);
 }
 
 .item {

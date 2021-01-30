@@ -1,21 +1,22 @@
 <template>
-  <!-- 首页 -->
+  <!-- k线图 -->
   <div class="container">
-    <div id="trading_market1" />
-    <div id="trading_market3" style="margin: 0 2%"/>
+    <div class="my-list"></div>
+    <div style="flex: 1">
+      <div id="trading_kline3" />
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import { baojiao, marketData } from "@/lib/trading/index";
+import { kLineView } from "@/lib/trading/index";
 
 export default defineComponent({
-  name: "Market",
+  name: "KLine",
   components: {},
   setup() {
     function createView(): void {
-      baojiao('trading_market1');
-      marketData('trading_market3');
+      kLineView("trading_kline3");
     }
 
     onMounted(() => {
@@ -34,12 +35,11 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 }
-#trading_market1 {
-  width: 100%;
-  height: 100px;
+.my-list {
+  width: 240px;
 }
-#trading_market3 {
-  width: 96%;
-  height: 98%;
+#trading_kline3 {
+  width: 100%;
+  height: 100%;
 }
 </style>

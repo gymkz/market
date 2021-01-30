@@ -3,7 +3,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #Fafafa;
   /* height: 100vh; */
   /* overflow: scroll; */
 }
@@ -57,14 +56,14 @@ button:active {
   background-color: #00000010;
 }
 
-.button {
+.button2 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-.button:active {
+.button2:active {
   /* 阴影平移-镂空按钮 */
   /* position: relative;
   top: 2rpx;
@@ -74,4 +73,13 @@ button:active {
   opacity: 0.87;
   transform: scale(0.97, 0.97);
   background-color: #00000010;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #00000000;
 }

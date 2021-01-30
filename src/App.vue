@@ -20,13 +20,14 @@ export default defineComponent({
   },
   setup() {
     const router = Navigate.get();
-    const paths = ['/home', '/market', '/target', '/news','/about'];
+    const paths = ['/home', '/market', '/target', '/books','/about'];
     function onChangeTab(num: number) {
       console.log(num)
       router.replace(paths[num]);
     }
     function onLogin() {
-      router.push("/login");
+      // router.push("/login");
+      
     }
     onMounted(() => {
       console.log("---");
