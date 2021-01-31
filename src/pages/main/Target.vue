@@ -40,7 +40,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 }
-#trading_hui1 {
+#trading_waihui1 {
   width: 100%;
   height: 500px;
   position: relative;
