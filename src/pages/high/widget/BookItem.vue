@@ -31,8 +31,8 @@ export default defineComponent({
 <style scoped>
 .item-box {
   width: 537px;
-  height: 240px;
-  margin: 14px 16px;
+  height: 219px;
+  margin: 13px 12px;
   border-radius: 8px;
 
   display: flex;
@@ -48,8 +48,8 @@ export default defineComponent({
 }
 
 .item-img {
-  width: 186px;
-  height: 240px;
+  width: 172px;
+  height: 219px;
   border-radius: 8px;
   background-color: lavender;
 }
@@ -71,7 +71,7 @@ export default defineComponent({
 .item-label {
   color: #333333;
   font-size: 16px;
-  margin: 6px 0;
+  margin: 0 0 6px 0;
   /* line-height: 22px; */
   text-overflow: ellipsis;
 }

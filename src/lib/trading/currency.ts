@@ -5,7 +5,7 @@
 // eslint-disable-next-line
 import { bindChild } from './utils/index';
 
-export function currencyView(): void {
+export function currencyView(vId: string): void {
   const options = {
     "symbol": "FX:EURUSD",
     "width": "300",
@@ -19,10 +19,10 @@ export function currencyView(): void {
     "autosize": false,
     "largeChartUrl": ""
   };
-  bindChild('trading_hui3',options, 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js')
+  bindChild(vId,options, 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js')
 }
 
-export function waihuiWidget(): void {
+export function waihuiWidget(vId: string): void {
   // 外汇浮动热图
   // <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async></script>
   // 汇换表
@@ -45,5 +45,5 @@ export function waihuiWidget(): void {
     "colorTheme": "light",
     "locale": "zh_CN"
   }
-  bindChild('trading_hui1', waihui, 'https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js')
+  bindChild(vId, waihui, 'https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js')
 }

@@ -3,15 +3,15 @@
   <div class="container">
     <h3>常用货币汇率一览表</h3>
     <div style="position: relative">
-      <div id="trading_hui1" />
+      <div id="trading_waihui1" />
       <div class="cover" />
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, onUnmounted } from "vue";
 
-import { waihuiWidget } from "@/lib/trading/index";
+import { waihuiWidget, clearChild } from "@/lib/trading/index";
 
 export default defineComponent({
   name: "Target",
@@ -19,10 +19,14 @@ export default defineComponent({
   setup() {
     function createView() {
       // currencyView();
-      waihuiWidget();
+      waihuiWidget('trading_waihui1');
     }
     onMounted(() => {
       createView();
+    });
+
+    onUnmounted(() => {
+      clearChild("trading_waihui1");
     });
 
     return {};

@@ -2,24 +2,29 @@
   <!-- 首页 -->
   <div class="container">
     <div id="trading_market1" />
-    <div id="trading_market3" style="margin: 0 2%"/>
+    <div id="trading_market3" style="margin: 0 2%" />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import { baojiao, marketData } from "@/lib/trading/index";
+import { defineComponent, onMounted, onUnmounted } from "vue";
+import { baojiao, marketData, clearChild } from "@/lib/trading/index";
 
 export default defineComponent({
   name: "Market",
   components: {},
   setup() {
     function createView(): void {
-      baojiao('trading_market1');
-      marketData('trading_market3');
+      baojiao("trading_market1");
+      marketData("trading_market3");
     }
 
     onMounted(() => {
       createView();
+    });
+
+    onUnmounted(() => {
+      clearChild("trading_market1");
+      clearChild("trading_market3");
     });
 
     return {};

@@ -1,8 +1,8 @@
 <template>
   <!-- 项目根视图 -->
-  <div class="container">
+  <div class="app-box">
     <Appbar :onLogin="onLogin" :onChange="onChangeTab" />
-    <div style="flex: 1">
+    <div class="router-box">
       <router-view></router-view>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default defineComponent({
   },
   setup() {
     const router = Navigate.get();
-    const paths = ['/home', '/market', '/target', '/books','/about'];
+    const paths = ['/home', '/market', '/target', '/high','/about'];
     function onChangeTab(num: number) {
       console.log(num)
       router.replace(paths[num]);
@@ -44,9 +44,15 @@ export default defineComponent({
 });
 </script>
 <style>
-.container {
+.app-box {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+.router-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 </style>

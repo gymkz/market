@@ -1,68 +1,92 @@
 <template>
   <!-- 菜单拦 -->
-  <div class="container">
+  <div class="appmenu">
     <ul class="ul-box">
       <li class="li-box" v-for="(items, index) in list" v-bind:key="index">
         <span class="ul-span" @click="onChangeTab(index)">{{
           items.label
         }}</span>
         <ul class="ul-box" v-if="items.select">
-          <li class="li-box" v-for="item in items.value" v-bind:key="item">
-            <span class="li-span" @click="onChangeItem(item)">{{ item }}</span>
+          <li
+            class="li-box"
+            v-for="(item, inde) in items.value"
+            v-bind:key="item"
+          >
+            <span :class="'li-span' + (menuText === item ? ' span2':'')" @click="onChangeItem(item, inde, index)">{{
+              item
+            }}</span>
           </li>
         </ul>
       </li>
     </ul>
   </div>
+  <div style="width: 200px; min-width: 200px" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "Appmenu",
-  setup() {
+  props: {
+    onChange: Function,
+  },
+  setup(props) {
     const list = ref([
-      { label: "哈哈馆", select: true, value: ["凸透馆", "凹透馆", "U型馆"] },
-      { label: "运动馆", select: false, value: ["排球场", "羽毛球", "篮球"] },
-      { label: "图书馆", select: false, value: ["技术", "经济", "文学"] },
-      { label: "设备馆", select: false, value: ["手机", "电脑", "平板"] },
+      { label: "书籍", select: true, value: ["金融学"] },
+      {
+        label: "视频",
+        select: false,
+        value: [
+          "LoneCapital",
+          "投资学-中央财经大学",
+          "货币金融学-上海财经大学",
+        ],
+      },
+      { label: "专栏", select: false, value: ["期货", "基金", "加密货币"] },
+      { label: "广场", select: false, value: ["观点"] },
     ]);
-    const menuIndex = ref(0);
-    const menuText = ref("凸透馆");
+    let menuIndex = 0;
+    const menuText = ref("金融学");
 
     // 选中的菜单
     function onChangeTab(index: number): void {
       const item = list.value[index];
       list.value[index].select = !item.select;
+      menuIndex = index;
     }
 
     // 选中的某一项
-    function onChangeItem(e: string): void {
+    function onChangeItem(e: string, index: number, menuId: number): void {
+      menuIndex = menuId;
       menuText.value = e;
+      if (props.onChange) {
+        props.onChange(menuIndex, index);
+      }
     }
 
     return {
       list,
-      menuIndex,
       menuText,
       onChangeTab,
-      onChangeItem
+      onChangeItem,
     };
   },
 });
 </script>
 <style scoped>
-.container {
+.appmenu {
   z-index: 9;
-  width: 180px;
+  width: 200px;
   min-height: 88vh;
-  margin-top: 16px;
-  margin-right: 12px;
+  /* margin-top: 16px; */
+  /* margin-right: 12px; */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   box-shadow: 4px 4px 8px #00000020;
   background-color: white;
   overflow: scroll;
+  position: fixed;
+  top: 56px;
 }
 .ul-box {
   list-style: none;
@@ -70,20 +94,20 @@ export default defineComponent({
   margin: 0;
 }
 .li-box {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   list-style: none;
 }
 .ul-span {
-  width: 100%;
+  /* width: 100%; */
   font-size: 18px;
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 8px 0 8px 16px;
 }
 .ul-span:hover {
   opacity: 0.87;
-  background-color: #ff990020;
+  background-color: #00000010;
 }
 .ul-span:active {
   top: 1px;
@@ -93,17 +117,16 @@ export default defineComponent({
 }
 .li-span {
   font-size: 16px;
-  padding: 8px 32px;
+  padding: 8px 16px 8px 26px;
+  max-height: 18px;
+  overflow: hidden;
 }
-.li-span2 {
-  color: coral;
-  font-size: 16px;
-  padding: 8px 32px;
-  background-color: #ff990030;
+.span2 {
+  background-color: #00000020;
 }
 .li-span:hover {
   opacity: 0.87;
-  background-color: #ff990020;
+  background-color: #00000020;
 }
 .li-span:active {
   top: 1px;
